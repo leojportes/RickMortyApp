@@ -29,17 +29,25 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
+import com.example.mentoriaproj1.MentoriaApp
+import com.example.mentoriaproj1.di.Di
 import com.example.mentoriaproj1.domain.models.CharacterResponse
 import com.example.mentoriaproj1.ui.characters.CharacterViewState
 import com.example.mentoriaproj1.ui.characters.NavigationKeys
 import com.example.mentoriaproj1.ui.characters.detail.CharacterDetailsActivity
 import com.example.mentoriaproj1.ui.theme.MentoriaProj1Theme
+import org.kodein.di.DI
+import org.kodein.di.DIAware
+import org.kodein.di.instance
 
 @SuppressLint("StateFlowValueCalledInComposition")
-internal class CharactersListActivity : ComponentActivity() {
+internal class CharactersListActivity : ComponentActivity(), DIAware {
     @OptIn(ExperimentalMaterial3Api::class)
 
-    val viewModel: CharactersViewModel by viewModels()
+    override val di = Di.di
+
+    private val viewModel by instance<CharactersViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
