@@ -1,6 +1,7 @@
 package com.example.mentoriaproj1.ui.characters.list
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -24,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -44,21 +46,23 @@ internal class CharactersListActivity : ComponentActivity() {
 
         setContent {
             val characterComposable = viewModel.charactersViewState.collectAsState().value
-
+            val context = LocalContext.current
             LaunchedEffect(Unit) {
                 viewModel.retrieveCharacters()
             }
             SetupView(
                 characterComposable,
                 onBackPressed = { this.finish() }
-            ) { character: CharacterResponse -> navigateToDetails(character = character) }
+            ) { character: CharacterResponse ->
+                navigateToDetails(character = character, context)
+            }
         }
     }
 
-    private fun navigateToDetails(character: CharacterResponse) {
-        val intent = Intent(this, CharacterDetailsActivity::class.java)
+    private fun navigateToDetails(character: CharacterResponse, context: Context) {
+        val intent = Intent(context, CharacterDetailsActivity::class.java)
         intent.putExtra(NavigationKeys.character, character)
-        this.startActivity(intent)
+        context.startActivity(intent)
     }
 
 }

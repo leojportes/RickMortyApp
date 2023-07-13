@@ -33,4 +33,4 @@ data class LocationResponse(
     val name: String,
     val type: String,
     val dimension: String
-)
+): java.io.Serializable
