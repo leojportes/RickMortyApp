@@ -1,19 +1,19 @@
 
 # Rick and Morty App
 
-* <b>Application that lists the characters of Rick and Morty<br>
+:iphone: <b>Application that lists the characters/locations of Rick and Morty<br>
 
 ## Tópics 
 
- [:book: Project description](#project-description)
+ :book: [Project description](#project-description)
  
- [:wrench: Construction](#construction)
+ :wrench: [Construction](#construction)
  
- [:cloud: API](#api)
+ :cloud: [API](#api)
  
- [:gem: Improvements](#improvements)
+ :gem: [Improvements](#improvements)
 
- [:open_file_folder: Dependencies](#dependencies)
+ :open_file_folder: [Dependencies](#dependencies)
 
 ## Project description
 * <b>We provide:
